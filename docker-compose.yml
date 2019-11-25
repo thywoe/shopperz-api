@@ -4,7 +4,7 @@ services:
   db:
     image: postgres
     ports:
-      - "5432"
+      - "5432:5432"
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
@@ -13,8 +13,13 @@ services:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-        - .:/shopperz-api
+        - ./shopperz:/shopperz-api
     ports:
         - "8000:8000"
+    depends_on:
+        - migration
+  migration:
+    build: .
+    command: python manage.py migrate
     depends_on:
         - db

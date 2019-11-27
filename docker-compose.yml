@@ -11,6 +11,7 @@ services:
       - POSTGRES_PASSWORD=Dearmama0
   web:
     build: .
+    entrypoint: /automate.sh
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
         - ./shopperz:/shopperz-api
@@ -20,6 +21,6 @@ services:
         - migration
   migration:
     build: .
-    command: python manage.py migrate
+    command: python manage.py migrate 
     depends_on:
         - db

@@ -13,3 +13,6 @@ COPY ./shopperz /shopperz-api/
 
 RUN adduser -D thywoe
 USER thywoe
+
+# ENV DEBUG True
+# RUN python manage.py makemigrations

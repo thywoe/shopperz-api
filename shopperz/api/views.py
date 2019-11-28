@@ -10,10 +10,12 @@ from rest_framework import status
 
 
 class Register(APIView):
-    
+    '''
+    Register a user
+    ''' 
     def post(self, request):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return JsonResponse(dict(message='profile is successfully created'), status=200)
+            return JsonResponse(dict(message='profile is successfully created'), status=201)
         return JsonResponse(serializer.errors, status=400)

@@ -46,7 +46,10 @@ INSTALLED_APPS = [
     
 ]
 
-REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }
+REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+                  'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication')
+                  
+            }
 
 
 MIDDLEWARE = [
@@ -88,7 +91,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': config('POSTGRES_PASSWORD'),
+        'PASSWORD': 'Dearmama0',
         'HOST': 'db',
         'PORT': '5432'
     }
